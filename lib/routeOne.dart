@@ -5,6 +5,36 @@ class RouteOne extends StatelessWidget {
   Widget build(BuildContext context) {
     return RouteOnePage();
   }
+}
+
+class RouteOnePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return RouteOneState();
+  }
+}
+
+class RouteOneState extends State<RouteOnePage> {
+  List<CountryModel> countryModels = List();
+
+  RouteOneState() {
+    countryModels.add(CountryModel('assets/flag_uk.png', 'UK'));
+    countryModels.add(CountryModel('assets/flag_uk.png', 'GB'));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text('Countries')),
+        body: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+                child: createListItemView(countryModels[index].countryImgPath,
+                    countryModels[index].countryName));
+          },
+          itemCount: countryModels.length
+        ));
+  }
 
   Widget createListItemView(String countryImgPath, String countryName) {
     return Container(
@@ -27,33 +57,7 @@ class RouteOne extends StatelessWidget {
   }
 }
 
-class RouteOnePage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return RouteOneState();
-  }
-
-}
-
-class RouteOneState extends State<RouteOnePage>{
-  List<CountryModel> countryModels = List();
-
-  RouteOneState(){
-    countryModels.add(CountryModel('assets/flag_uk.png', 'UK'));
-    countryModels.add(CountryModel('assets/flag_uk.png', 'GB'));
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Countries')
-      ),
-    );
-  }
-
-}
-
-class CountryModel{
+class CountryModel {
   String _countryImgPath;
   String _countryName;
 
@@ -62,6 +66,4 @@ class CountryModel{
   String get countryName => _countryName;
 
   String get countryImgPath => _countryImgPath;
-
-
 }
