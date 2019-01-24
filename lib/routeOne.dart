@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 class RouteOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: createListItemView('assets/flag.png', 'UK'),
-    );
+    return RouteOnePage();
   }
 
   Widget createListItemView(String countryImgPath, String countryName) {
@@ -27,4 +25,43 @@ class RouteOne extends StatelessWidget {
           ],
         ));
   }
+}
+
+class RouteOnePage extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return RouteOneState();
+  }
+
+}
+
+class RouteOneState extends State<RouteOnePage>{
+  List<CountryModel> countryModels = List();
+
+  RouteOneState(){
+    countryModels.add(CountryModel('assets/flag_uk.png', 'UK'));
+    countryModels.add(CountryModel('assets/flag_uk.png', 'GB'));
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Countries')
+      ),
+    );
+  }
+
+}
+
+class CountryModel{
+  String _countryImgPath;
+  String _countryName;
+
+  CountryModel(this._countryImgPath, this._countryName);
+
+  String get countryName => _countryName;
+
+  String get countryImgPath => _countryImgPath;
+
+
 }
