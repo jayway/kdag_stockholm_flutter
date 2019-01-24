@@ -22,8 +22,8 @@ class RouteOneState extends State<RouteOnePage> {
   @override
   void initState() {
     super.initState();
-    countryModels.add(CountryModel('assets/flag_uk.png', 'UK'));
-    countryModels.add(CountryModel('assets/flag_uk.png', 'GB'));
+    countryModels.add(CountryModel('assets/flag_uk.png', 'UK', "United Kingdom"));
+    countryModels.add(CountryModel('assets/flag_uk.png', 'GB', "Great Britain"));
   }
 
   @override
