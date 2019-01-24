@@ -68,7 +68,7 @@ class RouteOneDetailedState extends State<RouteOneDetailedPage>
                 future: fetchPost(countryModel),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Text(snapshot.data.extract);
+                    return Text(snapshot.data.extract.substring(0, 500));
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
                   }
